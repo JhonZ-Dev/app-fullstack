@@ -41,4 +41,8 @@ public class ProductoService {
             return null;
         }
     }
+
+    public void eliminar(Long id_producto){
+        repositorio.deleteById(id_producto);
+    }
 }

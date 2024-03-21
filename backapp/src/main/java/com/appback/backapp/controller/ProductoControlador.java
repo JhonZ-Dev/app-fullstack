@@ -29,5 +29,7 @@ public class ProductoControlador {
         return productoService.productoList();
     }
     @DeleteMapping("/eliminar")
-    public void
+    public void delete(Long id_producto){
+        productoService.eliminar(id_producto);
+    }
 }
