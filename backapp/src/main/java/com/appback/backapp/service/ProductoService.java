@@ -30,17 +30,25 @@ public class ProductoService {
     }
 
     //metodo para editar
-    public Producto editar(Producto producto, Long id_producto){
-        Producto producto1 = repositorio.findById(id_producto).orElse(null);
-        if(producto1 !=null){
-            producto1.setNombreproducto(producto.getNombreproducto());
-            producto1.setDetalleproducto(producto.getDetalleproducto());
-            producto1.setPrecioproducto(producto.getPrecioproducto());
-            return repositorio.save(producto1);
-        }else {
+    public Producto editar(Producto producto, Long id_producto) {
+        try {
+            Optional<Producto> productoOptional = repositorio.findById(id_producto);
+            if (productoOptional.isPresent()) {
+                Producto producto1 = productoOptional.get();
+                producto1.setNombreproducto(producto.getNombreproducto());
+                producto1.setDetalleproducto(producto.getDetalleproducto());
+                producto1.setPrecioproducto(producto.getPrecioproducto());
+                return repositorio.save(producto1);
+            } else {
+                return null;
+            }
+        } catch (Exception e) {
+            // Manejar la excepción de acuerdo a tus necesidades.
+            e.printStackTrace();
             return null;
         }
     }
+
 
     public void eliminar(Long id_producto){
         repositorio.deleteById(id_producto);
