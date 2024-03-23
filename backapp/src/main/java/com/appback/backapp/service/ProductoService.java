@@ -1,6 +1,7 @@
 package com.appback.backapp.service;
 
 import com.appback.backapp.model.Producto;
+import com.appback.backapp.model.RespuestaPersonalizada;
 import com.appback.backapp.repositorio.ProductoRepositorio;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -52,7 +53,16 @@ public class ProductoService {
     }
 
 
-    public void eliminar(Long id_producto){
+   /* public void eliminar(Long id_producto){
         repositorio.deleteById(id_producto);
+    }*/
+    public RespuestaPersonalizada eliminar(Long id_producto) {
+        try {
+            repositorio.deleteById(id_producto);
+            return new RespuestaPersonalizada(true, "Producto eliminado correctamente.");
+        } catch (Exception e) {
+            e.printStackTrace();
+            return new RespuestaPersonalizada(false, "Se produjo un error al intentar eliminar el producto.");
+        }
     }
 }
