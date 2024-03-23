@@ -1,6 +1,7 @@
 package com.appback.backapp.controller;
 
 import com.appback.backapp.model.Producto;
+import com.appback.backapp.model.RespuestaPersonalizada;
 import com.appback.backapp.service.ProductoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -29,7 +30,7 @@ public class ProductoControlador {
         return productoService.productoList();
     }
     @DeleteMapping("/eliminar")
-    public void delete(Long id_producto){
-        productoService.eliminar(id_producto);
+    public RespuestaPersonalizada delete(Long id_producto){
+        return productoService.eliminar(id_producto);
     }
 }
