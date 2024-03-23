@@ -40,12 +40,14 @@ public class ProductoService {
                 producto1.setPrecioproducto(producto.getPrecioproducto());
                 return repositorio.save(producto1);
             } else {
-                return null;
+                throw new Exception("El producto no se encontró en el repositorio.");
+
             }
         } catch (Exception e) {
             // Manejar la excepción de acuerdo a tus necesidades.
             e.printStackTrace();
             return null;
+
         }
     }
 
