@@ -16,7 +16,9 @@ public class ProductoService {
 
 
     //metodo para crear
-  
+    public Producto guardar (Producto producto){
+        return repositorio.save(producto);
+    }
 
     //listar
     public List<Producto> productoList(){
