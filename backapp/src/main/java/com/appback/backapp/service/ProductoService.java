@@ -16,7 +16,22 @@ public class ProductoService {
 
 
     //metodo para crear
-    public Producto guardar (Producto producto){
+    public Producto guardar( Producto producto) {
+        // Validar que el nombre del producto no esté vacío
+        if (producto.getNombreproducto() == null || producto.getNombreproducto().isEmpty()) {
+            throw new IllegalArgumentException("El nombre del producto no puede estar vacío.");
+        }
+
+        // Validar que el precio del producto sea positivo
+        if (producto.getPrecioproducto() == null || producto.getPrecioproducto() <= 0) {
+            throw new IllegalArgumentException("El precio del producto debe ser positivo.");
+        }
+
+        // Validar que el detalle del producto no esté vacío si se proporciona
+        if (producto.getDetalleproducto() != null && producto.getDetalleproducto().isEmpty()) {
+            throw new IllegalArgumentException("El detalle del producto no puede estar vacío.");
+        }
+
         return repositorio.save(producto);
     }
 
