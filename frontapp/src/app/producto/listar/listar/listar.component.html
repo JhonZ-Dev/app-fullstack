@@ -1,0 +1,35 @@
+
+<div class="container mt-4">
+    <div>
+        <h2>Listado de productos</h2>
+    </div>
+    <table class="table table-bordered">
+        <thead class="thead-dark">
+          <tr>
+            <th>ID</th>
+            <th>Nombre Usuario</th>
+            <th>Contraseña Usuario</th>
+            <th>Rol Usuario</th>
+           
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let producto of productos">
+            <td>{{ producto.id_producto }}</td>
+            <td>{{ producto.nombreproducto }}</td>
+            <td>{{ producto.precioproducto }}</td>
+            <td>{{ producto.detalleproducto}}</td>
+    
+            <td>
+              <!-- <button (click)="editarUsuario(usuario.id_usuario)" class="btn btn-sm me-3"><i class="fa fa-pencil-square" style="font-size:25px;"></i>
+              </button>
+              <button class="btn " (click)="eliminarUsuarios(usuario.id_usuario)"><i class="fa fa-trash" aria-hidden="true" style="font-size:25px; color: red;"></i></button> -->
+
+              <!-- <button class="btn btn-warning" (click)="irAEditarTren(tren.id_tren)">Editar</button>
+              <button class="btn btn-danger" (click)="eliminarTren(tren.id_tren)">Eliminar</button> -->
+            </td>
+          </tr>
+        </tbody>
+      </table>
+</div>

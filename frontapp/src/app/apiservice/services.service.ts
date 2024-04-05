@@ -8,7 +8,7 @@ import { Productos } from '../producto/productos';
 })
 export class ServicesService {
 
-  url="http://localhost:8080/api/prodcuto"
+  url="http://localhost:8081/api/producto"
 
   constructor(private http:HttpClient) { }
 
