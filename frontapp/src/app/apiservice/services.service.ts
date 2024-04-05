@@ -12,8 +12,15 @@ export class ServicesService {
 
   constructor(private http:HttpClient) { }
 
-
+  //metodo para agregar productos
+  public agregarProductos(productos:Productos):Observable<Object>{
+    return this.http.post(this.url+"/guardar", productos);
+  }
  
+  //metodo para listar productos
+  public listarProductos():Observable<Productos[]>{
+    return this.http.get<Productos[]>(this.url+"/listar");
+  }
 
 
 }
