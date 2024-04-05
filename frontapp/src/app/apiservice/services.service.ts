@@ -28,7 +28,15 @@ export class ServicesService {
     return this.http.put<Productos>(`${this.url}/actualizar/${id_producto}`, productos);
   }
 
-  //
+  //eliminar
+  public eliminarproducto(id_producto:number):Observable<void>{
+    return this.http.delete<void>(this.url+"/eliminar/"+id_producto);
+  }
+
+  //obetenerporid
+  public obtenerPorId(id_producto:number):Observable<Productos>{
+    return this.http.get<Productos>(`${this.url}/obtener/${id_producto}`);
+  }
 
 
 }
