@@ -17,20 +17,20 @@ public class ProductoControlador {
 
     //guardar
     @PostMapping("/guardar")
-    public Producto insertar(Producto producto){
+    public Producto insertar(@RequestBody Producto producto){
         return productoService.guardar(producto);
     }
 
-    @PutMapping("/editar")
-    public Producto edit(Producto producto, Long id_producto){
+    @PutMapping("/editar/{id_producto}")
+    public Producto edit(@RequestBody Producto producto, @PathVariable Long id_producto){
         return productoService.editar(producto,id_producto);
     }
     @GetMapping("listar")
     public List<Producto> listarproductos(){
         return productoService.productoList();
     }
-    @DeleteMapping("/eliminar")
-    public RespuestaPersonalizada delete(Long id_producto){
+    @DeleteMapping("/eliminar/{id_producto}")
+    public RespuestaPersonalizada delete(@PathVariable Long id_producto){
         return productoService.eliminar(id_producto);
     }
 }
