@@ -4,5 +4,7 @@ export class Productos {
     precioproducto:number;
     detalleproducto:string;
     ivaproducto:number;
+    preciototal:number;
+
 
 }

@@ -38,6 +38,6 @@ eliminarProducto(id_producto:number){
 
   //modificar
   editarProducto(id_producto:number){
-    this.enrutador.navigate(['editar-producto', id_producto])
+    this.enrutador.navigate(['productos-editar', id_producto])
   }
 }

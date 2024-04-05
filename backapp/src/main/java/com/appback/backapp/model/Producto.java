@@ -14,6 +14,7 @@ public class Producto {
     private String nombreproducto;
     private Double precioproducto;
     private String detalleproducto;
-    private Double ivaproducto=0.12;
+    private Double ivaproducto;
+    private Double preciototal;
 
 }

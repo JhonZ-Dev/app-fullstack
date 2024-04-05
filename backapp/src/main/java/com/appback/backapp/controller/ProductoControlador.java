@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/producto")
@@ -33,5 +34,9 @@ public class ProductoControlador {
     @DeleteMapping("/eliminar/{id_producto}")
     public RespuestaPersonalizada delete(@PathVariable Long id_producto){
         return productoService.eliminar(id_producto);
+    }
+    @GetMapping("/obtener/{id_producto}")
+    public Optional<Producto> traerProducto(@PathVariable Long id_producto){
+        return productoService.listarOptional(id_producto);
     }
 }

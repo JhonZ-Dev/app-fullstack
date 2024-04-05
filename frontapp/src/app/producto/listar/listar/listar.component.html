@@ -7,9 +7,10 @@
         <thead class="thead-dark">
           <tr>
             <th>ID</th>
-            <th>Nombre Usuario</th>
-            <th>Contraseña Usuario</th>
-            <th>Rol Usuario</th>
+            <th>Nombre Producto</th>
+            <th>Precio Producto</th>
+            <th>Detalle Producto</th>
+            <th>Total</th>
            
             <th>Acciones</th>
           </tr>
@@ -20,11 +21,12 @@
             <td>{{ producto.nombreproducto }}</td>
             <td>{{ producto.precioproducto }}</td>
             <td>{{ producto.detalleproducto}}</td>
+            <td>{{ producto.preciototal}}</td>
     
             <td>
-              <!-- <button (click)="editarUsuario(usuario.id_usuario)" class="btn btn-sm me-3"><i class="fa fa-pencil-square" style="font-size:25px;"></i>
+             <button (click)="editarProducto(producto.id_producto)" class="btn btn-sm me-3"><i class="fa fa-pencil-square" style="font-size:25px;">Editar</i>
               </button>
-              <button class="btn " (click)="eliminarUsuarios(usuario.id_usuario)"><i class="fa fa-trash" aria-hidden="true" style="font-size:25px; color: red;"></i></button> -->
+              <button class="btn " (click)="eliminarProducto(producto.id_producto)"><i class="fa fa-trash" aria-hidden="true" style="font-size:25px; color: red;"></i>Eliminar</button> 
 
               <!-- <button class="btn btn-warning" (click)="irAEditarTren(tren.id_tren)">Editar</button>
               <button class="btn btn-danger" (click)="eliminarTren(tren.id_tren)">Eliminar</button> -->

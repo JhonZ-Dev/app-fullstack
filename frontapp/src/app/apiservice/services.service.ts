@@ -23,9 +23,9 @@ export class ServicesService {
   }
 
   //metodo para ediar los productos
-  public editarProductos(id_producto:number, productos:Productos):Observable<Object>{
+  public editarProductos(id_producto:number, productos:Productos):Observable<Productos>{
     //return this.http.put(this.url+"/editar/"+id_producto, productos);
-    return this.http.put<Productos>(`${this.url}/actualizar/${id_producto}`, productos);
+    return this.http.put<Productos>(`${this.url}/editar/${id_producto}`, productos);
   }
 
   //eliminar
