@@ -6,6 +6,7 @@ import com.appback.backapp.service.ProductoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.io.IOException;
 import java.util.List;
 import java.util.Optional;
 
@@ -19,7 +20,7 @@ public class ProductoControlador {
 
     //guardar
     @PostMapping("/guardar")
-    public Producto insertar(@RequestBody Producto producto){
+    public Producto insertar(@RequestBody Producto producto) throws IOException {
         return productoService.guardar(producto);
     }
 

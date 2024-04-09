@@ -40,4 +40,6 @@ eliminarProducto(id_producto:number){
   editarProducto(id_producto:number){
     this.enrutador.navigate(['productos-editar', id_producto])
   }
+
+  
 }

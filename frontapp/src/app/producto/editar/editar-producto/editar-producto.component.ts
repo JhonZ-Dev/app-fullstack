@@ -28,10 +28,15 @@ export class EditarProductoComponent {
     this.serviceAPI.editarProductos(id_producto, this.producto).subscribe(
       (actualizada)=>{
         console.log("Actualizada", actualizada);
+        this.irListaUsuarios();
       }, (error)=>{
         console.log("Error", error);
       }
     )
+  }
+
+  irListaUsuarios() {
+    this.enrutador.navigate(["/productos-lista"])
   }
 
 }

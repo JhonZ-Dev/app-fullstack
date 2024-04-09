@@ -5,7 +5,9 @@ import com.appback.backapp.model.RespuestaPersonalizada;
 import com.appback.backapp.repositorio.ProductoRepositorio;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
@@ -17,32 +19,25 @@ public class ProductoService {
 
 
     //metodo para crear
-    public Producto guardar(Producto producto) {
-        // Validar que el nombre del producto no esté vacío
+    public Producto guardar(Producto producto) throws IOException {
+        // Validaciones de datos del producto
         if (producto.getNombreproducto() == null || producto.getNombreproducto().isEmpty()) {
             throw new IllegalArgumentException("El nombre del producto no puede estar vacío.");
         }
-
-        // Validar que el precio del producto sea positivo
         if (producto.getPrecioproducto() == null || producto.getPrecioproducto() <= 0) {
             throw new IllegalArgumentException("El precio del producto debe ser positivo.");
         }
-
-        // Validar que el detalle del producto no esté vacío si se proporciona
         if (producto.getDetalleproducto() != null && producto.getDetalleproducto().isEmpty()) {
             throw new IllegalArgumentException("El detalle del producto no puede estar vacío.");
         }
 
-        // Calcular el precio total con el IVA incluido (IVA del 12%)
+        // Calcular precio total con IVA
         double precioProductoConIVA = producto.getPrecioproducto() * (1 + producto.getIvaproducto());
-
-        // Asignar el precio total calculado al producto
         producto.setPreciototal(precioProductoConIVA);
 
-        // Guardar el producto actualizado en el repositorio
+        // Guardar el producto en la base de datos
         return repositorio.save(producto);
     }
-
 
     //listar
     public List<Producto> productoList(){
@@ -63,14 +58,11 @@ public class ProductoService {
                 producto1.setNombreproducto(producto.getNombreproducto());
                 producto1.setDetalleproducto(producto.getDetalleproducto());
                 producto1.setPrecioproducto(producto.getPrecioproducto());
-
-                // Si el IVA se ha cambiado, recalcula el precio total
                 if (!Objects.equals(producto1.getIvaproducto(), producto.getIvaproducto())) {
                     producto1.setIvaproducto(producto.getIvaproducto());
                     double precioProductoConIVA = producto.getPrecioproducto() * (1 + producto.getIvaproducto());
                     producto1.setPreciototal(precioProductoConIVA);
                 }
-
                 return repositorio.save(producto1);
             } else {
                 throw new Exception("El producto no se encontró en el repositorio.");
@@ -81,12 +73,6 @@ public class ProductoService {
             return null;
         }
     }
-
-
-
-    /* public void eliminar(Long id_producto){
-        repositorio.deleteById(id_producto);
-    }*/
     public RespuestaPersonalizada eliminar(Long id_producto) {
         try {
             repositorio.deleteById(id_producto);
@@ -96,4 +82,6 @@ public class ProductoService {
             return new RespuestaPersonalizada(false, "Se produjo un error al intentar eliminar el producto.");
         }
     }
+
+    //subir imagen:
 }

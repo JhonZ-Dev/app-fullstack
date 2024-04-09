@@ -16,6 +16,7 @@ export class ServicesService {
   public agregarProductos(productos:Productos):Observable<Object>{
     return this.http.post(this.url+"/guardar", productos);
   }
+  
  
   //metodo para listar productos
   public listarProductos():Observable<Productos[]>{

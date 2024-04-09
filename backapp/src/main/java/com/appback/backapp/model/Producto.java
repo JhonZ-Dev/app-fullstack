@@ -3,6 +3,9 @@ package com.appback.backapp.model;
 import jakarta.persistence.*;
 import lombok.Data;
 
+import java.io.File;
+
+
 @Entity
 @Table(name = "tb_productos")
 @Data
@@ -16,5 +19,7 @@ public class Producto {
     private String detalleproducto;
     private Double ivaproducto;
     private Double preciototal;
+    private File imagenproducto;
+
 
 }
